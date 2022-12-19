@@ -162,7 +162,6 @@ class Account {
     return __awaiter(this, void 0, void 0, function* () {
       try {
         const { user } = req.body;
-        console.log("user", user);
         yield (0, Account_service_1.logOut)(user.username);
         res.json({
           errCode: 0,
@@ -180,18 +179,15 @@ class Account {
     return __awaiter(this, void 0, void 0, function* () {
       try {
         const { refreshToken } = req.body;
-        console.log("refreshToken:::", refreshToken);
 
         if (!refreshToken)
           throw newError.Unauthorized("RefreshToken is missing!");
         const payload = yield (0, jsonwebtoken_1.verifyRefreshToken)(
           refreshToken
         );
-        console.log("payload:::", payload);
         if (payload === undefined)
           throw newError.InternalServerError("Payload undefined");
         const { username } = payload;
-        console.log(username);
         const flag =
           payload instanceof String
             ? null

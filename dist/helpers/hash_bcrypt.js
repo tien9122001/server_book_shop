@@ -58,7 +58,6 @@ function genBcryptHash(pass) {
     const round = bcrypt_1.default.genSalt(10);
     bcrypt_1.default.hash(pass, round, (err, hash) => {
       if (err) {
-        console.log(err);
         reject(newError.InternalServerError("Can't generate hash password!"));
       }
 

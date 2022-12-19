@@ -63,13 +63,11 @@ exports.getAllUser = getAllUser;
 function getUser(username) {
   return new Promise(async (resolve, reject) => {
     try {
-      console.log("username::", username);
       const result = await prismaClient.users.findFirst({
         where: {
           username: username,
         },
       });
-      console.log(result);
       if (result) {
         delete result.password;
         resolve(result);
@@ -107,8 +105,6 @@ function createUser(userInfo) {
           username: username,
         },
       });
-
-      console.log(user);
 
       if (user) {
         return {
@@ -150,14 +146,12 @@ function verifiedOTPCreateUser(email, otp) {
   return __awaiter(this, void 0, void 0, function* () {
     try {
       let result = yield otp_service.verifyOtp(email, otp);
-      console.log("result", result);
       if (result.code !== 200) {
         return result;
       }
       const userData = JSON.parse(
         yield redis_client_1.default.get("register" + email)
       );
-      console.log("userData", userData);
 
       const user = yield prismaClient.users.create({
         data: userData,

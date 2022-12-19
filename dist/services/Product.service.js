@@ -110,12 +110,8 @@ function getProduct(
             sach: optionsBook,
             vanphongpham: optionsStationery,
           });
-          console.log("optionsBook", optionsBook);
-          console.log("optionsStationery", optionsStationery);
           const optionsBook_ = optionsBook;
           const optionsStationery_ = optionsStationery;
-
-          console.log("service ID : ", id);
 
           const search = {
             ten: {

@@ -93,9 +93,7 @@ function verifyToken(req, res, next) {
     try {
       if (req.headers["x-token"]) {
         const token = req.headers["x-token"];
-        console.log("token", token);
         const payload = yield jsonwebtoken_1.default.verify(token, secretToken);
-        console.log("payload", payload);
         req.user = payload;
         return next();
       }

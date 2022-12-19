@@ -114,7 +114,6 @@ function verifyUser(user, pass) {
               pass,
               password
             );
-            console.log("checkPass", checkPass);
             if (user == username && checkPass) {
               delete result.password;
               resolve(result);

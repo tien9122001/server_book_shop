@@ -91,8 +91,6 @@ function getAllCart(username) {
           quantity: JSON.parse(data[item]).quantity,
         };
       });
-      console.log(data1);
-      console.log("newKey", newKey);
       const carts = yield prisma_client.sanpham.findMany({
         where: {
           id: { in: newKey },

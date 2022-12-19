@@ -108,7 +108,6 @@ class Cart {
         } = req;
         // const { username } = req.body;
         const data = yield cartService.getAllCart(username);
-        // console.log("Controller:::",data);
         res.json({
           message: "success!",
           error: 0,
@@ -147,7 +146,6 @@ class Cart {
         const { user } = req;
         // const { username } = req.body;
         const data = yield cartService.updateCart(user.username, item, count);
-        // console.log("Controller:::",data);
         res.json(data);
       } catch (error) {
         const err = newError.InternalServerError(

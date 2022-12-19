@@ -84,7 +84,6 @@ class Product {
       try {
         const { id, page = 1, elementOfPage = 10, options, ten } = req.query;
 
-        console.log({ page, elementOfPage });
         let options_ = JSON.parse(options) || {};
 
         let pattern = /[^0-9]/g;

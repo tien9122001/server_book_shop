@@ -98,7 +98,6 @@ class User {
     return __awaiter(this, void 0, void 0, function* () {
       try {
         const { user } = req;
-        console.log(user);
         const result = yield userService.getUser(user.username);
         if (result) {
           return res.status(200).json({
@@ -133,7 +132,6 @@ class User {
         } = req.body.user;
         const { user } = req.body;
 
-        console.log("user", user);
         // if (
         //   !ho ||
         //   !ten ||
@@ -184,7 +182,6 @@ class User {
     return __awaiter(this, void 0, void 0, function* () {
       try {
         const { email } = req.body;
-        console.log("email", email);
         let result = yield otpService.createtOTP(email);
         return res.json(result);
       } catch (error) {
@@ -197,7 +194,6 @@ class User {
     return __awaiter(this, void 0, void 0, function* () {
       try {
         const { email, otp } = req.body;
-        console.log({ email, otp });
         let result = yield userService.verifiedOTPCreateUser(email, otp);
         return res.status(200).json(result);
       } catch (error) {
@@ -213,7 +209,6 @@ class User {
     return __awaiter(this, void 0, void 0, function* () {
       try {
         const { data } = req.body;
-        console.log(data);
         const { user } = req;
         let result = yield userService.updateUser(user.id, data);
         if (result) {
