@@ -93,8 +93,6 @@ function verifyUser(user, pass) {
     return new Promise((resolve, reject) =>
       __awaiter(this, void 0, void 0, function* () {
         try {
-          let username = "";
-          let password = "";
           const result = yield prisma_client_1.default.users.findFirst({
             where: {
               username: user,
@@ -105,7 +103,7 @@ function verifyUser(user, pass) {
               id: true,
               ho: true,
               ten: true,
-              isactived: true,
+              islocked: true,
             },
           });
           if (result) {

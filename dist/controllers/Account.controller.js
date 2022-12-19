@@ -96,8 +96,8 @@ class Account {
           password
         );
         if (user) {
-          const code = user.isactived ? 0 : -1;
-          const data = user.isactived
+          const code = user.islocked ? 0 : -1;
+          const data = user.islocked
             ? {
                 currentUser: user,
                 token: yield (0, jsonwebtoken_1.signToken)(user),
@@ -105,11 +105,9 @@ class Account {
               }
             : null;
 
-          const message = user.isactived
-            ? "Login done!"
-            : "user is not verified!";
+          const message = user.islocked ? "Login done!" : "user is blocked!";
 
-          delete user.isactived;
+          delete user.islocked;
 
           return res.json({
             errCode: code,
