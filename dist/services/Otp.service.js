@@ -49,20 +49,6 @@ const bcrypt = require("bcrypt");
 function createtOTP(email) {
   return __awaiter(this, void 0, void 0, function* () {
     try {
-      const checkExists = yield prismaClient.otp.findFirst({
-        where: {
-          email,
-        },
-      });
-
-      if (checkExists) {
-        yield yield prismaClient.otp.delete({
-          where: {
-            id: checkExists.id,
-          },
-        });
-      }
-
       const num = Math.floor(Math.random() * (999999 - 100000) + 100000);
       const otp = num.toString();
       yield (0, mailer_1.default)({
@@ -83,7 +69,7 @@ function createtOTP(email) {
         { EX: 120 }
       );
       return {
-        message: "create OTP success",
+        message: "ok",
       };
     } catch (error) {
       throw error;
